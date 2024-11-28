@@ -28,14 +28,14 @@ public class TestUtilTest {
     }
 
     @Test
-    @DisplayName("TestUtil.setOutToByteArray()")
+    @DisplayName("TestUtil.setOutToByteArray()")    //화면에 안나오는 테스트
     public void t2() {
-        ByteArrayOutputStream byteArrayOutputStream = TestUtil.setOutToByteArray();
+        ByteArrayOutputStream byteArrayOutputStream = TestUtil.setOutToByteArray(); //출력 끄기
 
         System.out.println("2 / 이순신 / 나의 죽음을 적들에게 알리지 말라!");
 
-        String out = byteArrayOutputStream.toString().trim();
-        TestUtil.clearSetOutToByteArray(byteArrayOutputStream);
+        String out = byteArrayOutputStream.toString().trim();   //출력문들이 쌓임
+        TestUtil.clearSetOutToByteArray(byteArrayOutputStream); //clear로 원상복구
 
         assertThat(out).isEqualTo("2 / 이순신 / 나의 죽음을 적들에게 알리지 말라!");
         System.out.println("이제는 화면에 출력됩니다.");
