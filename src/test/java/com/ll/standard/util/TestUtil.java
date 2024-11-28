@@ -1,8 +1,6 @@
 package com.ll.standard.util;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.PrintStream;
+import java.io.*;
 import java.util.Scanner;
 
 public class TestUtil {
@@ -18,7 +16,7 @@ public class TestUtil {
     }
 
     public static void clearSetOutToByteArray(ByteArrayOutputStream byteArrayOutputStream) {
-        System.setOut(new PrintStream(new ByteArrayOutputStream()));
+        System.setOut(new PrintStream(new FileOutputStream(FileDescriptor.out)));
         try {
             byteArrayOutputStream.close();
         } catch (IOException e) {
