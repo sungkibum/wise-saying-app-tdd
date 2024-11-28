@@ -1,6 +1,7 @@
 package com.ll.domain.wiseSaying.controller;
 
 import com.ll.App;
+import com.ll.AppTest;
 import com.ll.standard.util.TestUtil;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -16,14 +17,7 @@ public class WiseSayingControllerTest {
     @Test
     @DisplayName("== 명언 앱 ==")
     public void t1() {
-        Scanner scanner = TestUtil.getScanner("종료");
-        ByteArrayOutputStream outputStream = TestUtil.setOutToByteArray();
-        App app = new App(scanner);
-        app.run();
-
-        String output = outputStream.toString();
-
-        TestUtil.clearSetOutToByteArray(outputStream);
+        String output = AppTest.run("종료");
 
         assertThat(output).contains("== 명언 앱 ==");
     }
@@ -31,17 +25,23 @@ public class WiseSayingControllerTest {
     @Test
     @DisplayName("명령) ")
     public void t2() {
-        Scanner scanner = TestUtil.getScanner("""
+        String output = AppTest.run("""
                 목록
                 종료
                 """);
-        ByteArrayOutputStream outputStream = TestUtil.setOutToByteArray();
-        App app = new App(scanner);
-        app.run();
 
-        String output = outputStream.toString();
+        assertThat(output).contains("명령) ");
+    }
 
-        TestUtil.clearSetOutToByteArray(outputStream);
+    @Test
+    @DisplayName("명령을 2번 이상 입력할 수 있습니다. ")
+    public void t3() {
+        String output = AppTest.run("""
+                목록
+                목록
+                종료
+                """);
+
 
         assertThat(output).contains("명령) ");
     }
