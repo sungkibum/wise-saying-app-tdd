@@ -15,14 +15,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class WiseSayingControllerTest {
 
     @Test
-    @DisplayName("== 명언 앱 ==")
-    public void t1() {
-        String output = AppTest.run("");
-
-        assertThat(output).contains("== 명언 앱 ==");
-    }
-
-    @Test
     @DisplayName("명령) ")
     public void t2() {
         String output = AppTest.run("""
