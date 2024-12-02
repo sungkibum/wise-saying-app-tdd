@@ -47,4 +47,15 @@ public class WiseSayingControllerTest {
         assertThat(output).contains("명언 : ")
         .contains("작가 : ");
     }
+
+    @Test
+    @DisplayName("등록 완료 시 명언 번호 출력")
+    public void t5() {
+        String output = AppTest.run("""
+                등록
+                현재를 사랑하라.
+                작자미상
+                """);
+        assertThat(output).contains("1번 명언이 등록되었습니다.");
+    }
 }
