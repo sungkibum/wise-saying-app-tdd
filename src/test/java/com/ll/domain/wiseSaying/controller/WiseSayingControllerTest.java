@@ -40,7 +40,19 @@ public class WiseSayingControllerTest {
                 목록
                 """);
 
+        String[] split = output.split("명령\\)");
+        assertThat(split).contains("명령) ");
+    }
 
-        assertThat(output).contains("명령) ");
+    @Test
+    @DisplayName("등록")
+    public void t4() {
+        String output = AppTest.run("""
+                등록
+                현재를 사랑하라.
+                작자미상
+                """);
+        assertThat(output).contains("명언 : ")
+        .contains("작가 : ");
     }
 }
