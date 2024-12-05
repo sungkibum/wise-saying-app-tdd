@@ -23,4 +23,8 @@ public class WiseSayingService {
     public List<WiseSaying> list() {
         return wiseSayingRepository.list();
     }
+
+    public boolean delete(int id) {
+        return wiseSayingRepository.delete(id);
+    }
 }
