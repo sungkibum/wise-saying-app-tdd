@@ -38,8 +38,16 @@ public class WiseSayingController {
     }
 
     public void actionDelete(String cmd) {
-        String[] cmdBits = cmd.split("\\?");    //cmd 파라미터를 받아와서 ?를 기준으로 양옆으로 나눈 배열 생성
-        int id = Integer.parseInt(cmdBits[1].split("=")[1]);    // 양옆으로 나눈 배열 중 오른쪽 값을 =를 기준으로 다시 나누고 오른쪽 값을 받아옴(id 값)
+        String[] cmdBits;
+        int id;
+        try {
+            cmdBits = cmd.split("\\?");    //cmd 파라미터를 받아와서 ?를 기준으로 양옆으로 나눈 배열 생성
+            id = Integer.parseInt(cmdBits[1].split("=")[1]);    // 양옆으로 나눈 배열 중 오른쪽 값을 =를 기준으로 다시 나누고 오른쪽 값을 받아옴(id 값)
+        } catch (Exception e) {
+            System.out.println("명령어를 잘못 입력하셨습니다.");
+            return;
+        }
+
         boolean remove = wiseSayingService.delete(id);
         if (remove) {
             System.out.println(id + "번 명언이 삭제되었습니다.");
