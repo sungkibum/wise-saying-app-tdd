@@ -9,9 +9,8 @@ import java.util.Scanner;
 
 public class WiseSayingController {
     private final Scanner sc;
-
-
     private final WiseSayingService wiseSayingService;
+
     public WiseSayingController(Scanner sc) {
         this.sc = sc;
         this.wiseSayingService = new WiseSayingService();

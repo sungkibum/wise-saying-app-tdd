@@ -1,26 +1,26 @@
 package com.ll.domain.wiseSaying.service;
 
 import com.ll.domain.wiseSaying.entity.WiseSaying;
+import com.ll.domain.wiseSaying.repository.WiseSayingRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class WiseSayingService {
-    private int lastId;
-    List<WiseSaying> wiseSayings;
+
+    private final WiseSayingRepository wiseSayingRepository;
     public WiseSayingService() {
-        this.lastId = 0;
-        this.wiseSayings = new ArrayList<>();
+        this.wiseSayingRepository = new WiseSayingRepository();
     }
 
     public WiseSaying add(String content, String author) {
-        int id = ++lastId;
-        WiseSaying wiseSaying = new WiseSaying(id, content, author);
-        wiseSayings.add(wiseSaying);
+        WiseSaying wiseSaying = new WiseSaying(0, content, author);
+        wiseSayingRepository.add(wiseSaying);
+
         return wiseSaying;
     }
 
     public List<WiseSaying> list() {
-        return wiseSayings;
+        return wiseSayingRepository.list();
     }
 }
