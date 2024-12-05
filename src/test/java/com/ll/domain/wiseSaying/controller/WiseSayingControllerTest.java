@@ -91,4 +91,23 @@ public class WiseSayingControllerTest {
                 .contains("2 / 작자미상 / 현재를 미워하라.")
                 .contains("1 / 작자미상 / 현재를 사랑하라.");
     }
+
+    @Test
+    @DisplayName("삭제")
+    public void t8() {
+        String output = AppTest.run("""
+                등록
+                현재를 사랑하라.
+                작자미상
+                등록
+                현재를 미워하라.
+                작자미상
+                삭제?id=1
+                목록
+                """);
+        assertThat(output).contains("번호 / 작가 / 명언")
+                .contains("------------")
+                .contains("2 / 작자미상 / 현재를 미워하라.")
+                .doesNotContain("1 / 작자미상 / 현재를 사랑하라.");
+    }
 }
