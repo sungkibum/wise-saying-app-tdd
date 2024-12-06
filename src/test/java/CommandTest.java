@@ -9,6 +9,11 @@ public class CommandTest {
     public void test1() {
         Command cmd = new Command("삭제?id=10");
         assertThat(cmd.getActionName().equals("삭제"));    //"삭제"
+    }
 
+    @Test
+    public void test2() {
+        Command cmd = new Command("삭제?id=10");
+        assertThat(cmd.getParam("id")).isEqualTo("10");    //"삭제"
     }
 }
