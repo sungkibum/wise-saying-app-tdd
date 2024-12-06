@@ -40,4 +40,11 @@ public class CommandTest {
         Command cmd = new Command("삭제?id=10");
         assertThat(cmd.getParamAsInt("number" ,-1)).isEqualTo(-1);    // -1
     }
+
+    @Test
+    public void test7() {
+        Command cmd = new Command("목록?number=10&name=Paul");
+        assertThat(cmd.getParamAsInt("number" ,0)).isEqualTo(10);    // 10
+        assertThat(cmd.getParam("name")).isEqualTo("Paul"); // Paul
+    }
 }
