@@ -22,4 +22,10 @@ public class CommandTest {
         Command cmd = new Command("삭제?id=10");
         assertThat(cmd.getParam("number")).isNull();    //null
     }
+
+    @Test
+    public void test4() {
+        Command cmd = new Command("삭제?id=10");
+        assertThat(cmd.getParam("number", "없음")).isEqualTo("없음");    //"삭제"
+    }
 }

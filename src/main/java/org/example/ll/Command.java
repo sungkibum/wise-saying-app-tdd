@@ -27,4 +27,8 @@ public class Command {
     public String getParam(String id) {
         return params.get(id);  //params Map 자료구조에서 id에 해당하는 값 가져오기
     }
+
+    public String getParam(String id, String none) {
+        return params.getOrDefault(id, none);
+    }
 }
