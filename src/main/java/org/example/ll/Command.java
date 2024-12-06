@@ -35,4 +35,9 @@ public class Command {
     public int getParamAsInt(String id) {
         return Integer.parseInt(params.get(id));    //params Map 자료구조에서 id값을 가져올때 String 값이므로 int로 변환
     }
+
+    public int getParamAsInt(String id, int incorrect) {
+        if(getParam(id) == null) return incorrect;
+        return Integer.parseInt(params.get(id));
+    }
 }

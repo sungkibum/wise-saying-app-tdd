@@ -26,12 +26,18 @@ public class CommandTest {
     @Test
     public void test4() {
         Command cmd = new Command("삭제?id=10");
-        assertThat(cmd.getParam("number", "없음")).isEqualTo("없음");    //"삭제"
+        assertThat(cmd.getParam("number", "없음")).isEqualTo("없음");    //"없음"
     }
 
     @Test
     public void test5() {
         Command cmd = new Command("삭제?id=10");
-        assertThat(cmd.getParamAsInt("id")).isEqualTo(10);    //"삭제"
+        assertThat(cmd.getParamAsInt("id")).isEqualTo(10);    // 10
+    }
+
+    @Test
+    public void test6() {
+        Command cmd = new Command("삭제?id=10");
+        assertThat(cmd.getParamAsInt("number" ,-1)).isEqualTo(-1);    // -1
     }
 }
