@@ -13,6 +13,7 @@ public class Command {
 
         if (cmdBits.length == 1) return;    //cmd로 받아온 문자열을 ?로 나눌때 만약 삭제?dnjalnd같은 형태가 아닌 종료만 들어오면 배열의 길이가 1개가 됨 그럴 경우 밑에 함수들은 실행시키지않고 바로 리턴
         String queryString = cmdBits[1];    //cmdBits에서 오른쪽 즉, 배열의 두번째 값은 queryString(id설정 쿼리)로 설정
+        if (queryString.isEmpty()) return;
         String[] queryStringBits = queryString.split("&");  //queryString을 &를 기준으로 나눠 배열 queryStringBits에 대입
         for (String queryStringBit : queryStringBits) {
             String[] keyValue = queryStringBit.split("=", 2);   // 예를 들면 key값에 id = "5=5"값이 들어가면 =을 기준으로 나눴기 때문에

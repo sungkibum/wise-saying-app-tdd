@@ -47,4 +47,9 @@ public class CommandTest {
         assertThat(cmd.getParamAsInt("number" ,0)).isEqualTo(10);    // 10
         assertThat(cmd.getParam("name")).isEqualTo("Paul"); // Paul
     }
+
+    @Test
+    public void test8() {
+        Command cmd = new Command("목록?");
+    }
 }
