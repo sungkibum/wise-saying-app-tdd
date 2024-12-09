@@ -16,6 +16,9 @@ public class WiseSayingRepository {
     }
 
     public WiseSaying add(WiseSaying wiseSaying) {
+        if (wiseSaying.getId() != 0) {
+            return wiseSaying;
+        }
         wiseSaying.setId(++lastId);
         wiseSayings.add(wiseSaying);
         return wiseSaying;

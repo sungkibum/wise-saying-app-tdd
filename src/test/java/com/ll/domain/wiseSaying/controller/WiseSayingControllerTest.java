@@ -137,8 +137,10 @@ public class WiseSayingControllerTest {
                 현재를 미워하라.
                 작자미상
                 수정?id=1
+                과거를 미워하라.
+                홍길동
+                목록
                 """);
-        assertThat(output).contains("명언(기존) : 현재를 사랑하라.")
-                .contains("작가(기존) : 작자미상");
+        assertThat(output).contains("1 / 홍길동 / 과거를 미워하라.");
     }
 }

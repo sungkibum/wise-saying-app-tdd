@@ -62,11 +62,16 @@ public class WiseSayingController {
         }
 
         Optional<WiseSaying> opWiseSaying = wiseSayingService.findById(id);
-        if (opWiseSaying.isPresent()) {
-            System.out.println("명언(기존) : " + opWiseSaying.get().getContent());
-            System.out.println("작가(기존) : " + opWiseSaying.get().getAuthor());
+        if (opWiseSaying.isEmpty()) {
+            System.out.println(id + "번 명언은 존재하지 않습니다.");
             return;
         }
-        System.out.println(id + "번 명언은 존재하지 않습니다.");
+
+        WiseSaying wiseSaying = opWiseSaying.get();
+        System.out.println("명언(기존) : " + wiseSaying.getContent());
+        String content = sc.nextLine();
+        System.out.println("작가(기존) : " + wiseSaying.getAuthor());
+        String author = sc.nextLine();
+        wiseSayingService.modify(wiseSaying, content, author);
     }
 }
