@@ -32,8 +32,8 @@ public class WiseSayingControllerTest {
                 목록
                 """);
 
-        String[] split = output.split("명령\\)");
-        assertThat(split).contains("명령) ");
+        String[] split = output.split("명령\\) ");
+        assertThat(split).hasSize(4);
     }
 
     @Test
