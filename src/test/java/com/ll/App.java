@@ -31,8 +31,10 @@ public class App {
                 wiseSayingController.actionAdd();
             } else if ("목록".equals(command.getActionName())) {
                 wiseSayingController.actionList();
-            } else if("삭제".equals(command.getActionName())) {
-                wiseSayingController.actionDelete(cmd);
+            } else if ("삭제".equals(command.getActionName())) {
+                wiseSayingController.actionDelete(command);
+            } else if ("수정".equals(command.getActionName())) {
+                wiseSayingController.actionModify(command);
             }
         }
         System.out.print("명령) ");

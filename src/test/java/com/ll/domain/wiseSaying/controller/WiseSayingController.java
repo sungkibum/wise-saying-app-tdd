@@ -2,9 +2,11 @@ package com.ll.domain.wiseSaying.controller;
 
 import com.ll.domain.wiseSaying.entity.WiseSaying;
 import com.ll.domain.wiseSaying.service.WiseSayingService;
+import org.example.ll.Command;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class WiseSayingController {
@@ -37,20 +39,32 @@ public class WiseSayingController {
         }
     }
 
-    public void actionDelete(String cmd) {
-        String[] cmdBits;
-        int id;
-        try {
-            cmdBits = cmd.split("\\?");    //cmd 파라미터를 받아와서 ?를 기준으로 양옆으로 나눈 배열 생성
-            id = Integer.parseInt(cmdBits[1].split("=")[1]);    // 양옆으로 나눈 배열 중 오른쪽 값을 =를 기준으로 다시 나누고 오른쪽 값을 받아옴(id 값)
-        } catch (Exception e) {
-            System.out.println("명령어를 잘못 입력하셨습니다.");
+    public void actionDelete(Command cmd) {
+        int id = cmd.getParamAsInt("id", 0);
+        if (id == 0) {
+            System.out.println("id(숫자)를 입력해주세요.");
             return;
         }
 
         boolean remove = wiseSayingService.delete(id);
         if (remove) {
             System.out.println(id + "번 명언이 삭제되었습니다.");
+            return;
+        }
+        System.out.println(id + "번 명언은 존재하지 않습니다.");
+    }
+
+    public void actionModify(Command cmd) {
+        int id = cmd.getParamAsInt("id", 0);
+        if (id == 0) {
+            System.out.println("id(숫자)를 입력해주세요.");
+            return;
+        }
+
+        Optional<WiseSaying> opWiseSaying = wiseSayingService.findById(id);
+        if (opWiseSaying.isPresent()) {
+            System.out.println("명언(기존) : " + opWiseSaying.get().getContent());
+            System.out.println("작가(기존) : " + opWiseSaying.get().getAuthor());
             return;
         }
         System.out.println(id + "번 명언은 존재하지 않습니다.");

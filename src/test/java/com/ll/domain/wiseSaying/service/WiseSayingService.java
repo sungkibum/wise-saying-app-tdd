@@ -5,6 +5,7 @@ import com.ll.domain.wiseSaying.repository.WiseSayingRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class WiseSayingService {
 
@@ -27,4 +28,9 @@ public class WiseSayingService {
     public boolean delete(int id) {
         return wiseSayingRepository.delete(id);
     }
+
+    public Optional<WiseSaying> findById(int id) {
+        return wiseSayingRepository.findById(id);
+    }
+
 }
